@@ -50,8 +50,8 @@ def generate_launch_description():
             ),
         Node(
             package='vesc_driver',
-            executable='vesc_driver_node',
-            name='vesc_driver_node',
+            executable='vesc_driver_lc_node',
+            name='vesc_driver_lc_node',
             parameters=[LaunchConfiguration("config")]
         ),
 
