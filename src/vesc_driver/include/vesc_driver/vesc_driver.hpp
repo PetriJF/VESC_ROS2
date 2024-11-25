@@ -69,7 +69,7 @@ private:
       const std::string & str,
       const std::experimental::optional<double> & min_lower = std::experimental::optional<double>(),
       const std::experimental::optional<double> & max_upper =
-      std::experimental::optional<double>());
+        std::experimental::optional<double>());
     double clip(double value);
     rclcpp::Node * node_ptr;
     rclcpp::Logger logger;
@@ -87,7 +87,6 @@ private:
 
   // ROS services
   rclcpp::Publisher<VescStateStamped>::SharedPtr state_pub_;
-
   rclcpp::Publisher<Float64>::SharedPtr servo_sensor_pub_;
   rclcpp::SubscriptionBase::SharedPtr duty_cycle_sub_;
   rclcpp::SubscriptionBase::SharedPtr current_sub_;
