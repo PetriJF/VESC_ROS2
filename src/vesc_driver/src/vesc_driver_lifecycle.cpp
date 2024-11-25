@@ -106,7 +106,7 @@ LifecycleCallbackReturn VescDriverLifecycle::on_configure(
 
   // Timer
   timer_ = this->create_wall_timer(20ms, std::bind(&VescDriverLifecycle::timerCallback, this));
-  timer_->cancel();
+  timer_->cancel();   // TODO: Run the timer until the init sequence is done before canceling
 
   RCLCPP_INFO(get_logger(), "Node configured successfully.");
   return LifecycleCallbackReturn::SUCCESS;
@@ -154,6 +154,19 @@ LifecycleCallbackReturn VescDriverLifecycle::on_cleanup(
 LifecycleCallbackReturn VescDriverLifecycle::on_shutdown(
   const rclcpp_lifecycle::State &) {
   RCLCPP_INFO(get_logger(), "Shutting down node...");
+  state_pub_.reset();
+  servo_sensor_pub_.reset();
+  duty_cycle_sub_.reset();
+  current_sub_.reset();
+  brake_sub_.reset();
+  speed_sub_.reset();
+  position_sub_.reset();
+  servo_sub_.reset();
+  
+  if (timer_ && !timer_->is_canceled())
+    timer_->cancel();
+  
+  vesc_.disconnect();
   return LifecycleCallbackReturn::SUCCESS;
 }
 

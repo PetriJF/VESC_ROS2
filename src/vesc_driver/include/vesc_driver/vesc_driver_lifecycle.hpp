@@ -61,11 +61,11 @@ public:
   explicit VescDriverLifecycle(const rclcpp::NodeOptions & options);
 
   // Lifecycle node interface callbacks
-  LifecycleCallbackReturn on_configure( const rclcpp_lifecycle::State & prev_state) override;
-  LifecycleCallbackReturn on_activate(  const rclcpp_lifecycle::State & prev_state) override;
+  LifecycleCallbackReturn on_configure (const rclcpp_lifecycle::State & prev_state) override;
+  LifecycleCallbackReturn on_activate  (const rclcpp_lifecycle::State & prev_state) override;
   LifecycleCallbackReturn on_deactivate(const rclcpp_lifecycle::State & prev_state) override;
-  LifecycleCallbackReturn on_cleanup(   const rclcpp_lifecycle::State & prev_state) override;
-  LifecycleCallbackReturn on_shutdown(  const rclcpp_lifecycle::State & prev_state) override;
+  LifecycleCallbackReturn on_cleanup   (const rclcpp_lifecycle::State & prev_state) override;
+  LifecycleCallbackReturn on_shutdown  (const rclcpp_lifecycle::State & prev_state) override;
 
 private:
   // Interface to the VESC
